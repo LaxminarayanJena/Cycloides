@@ -32,8 +32,6 @@ public class CommonUtils {
 
 	private static AppiumDriver<MobileElement> driver;
 
-	// loadAndroidConfProp
-
 	public static void loadAndroidConfProp(String propertyFileName) throws IOException {
 
 		FileInputStream fis = new FileInputStream(
@@ -48,27 +46,19 @@ public class CommonUtils {
 		APPIUM_PORT = prop.getProperty("appium.server.port");
 
 	}
-	
-	// setAndroidCap
 
 	public static void setAndroidCapabilities() {
-		
-		//File app = new File(System.getProperty("user.dir")+"/src/test/resources/apks/Amazon_shopping.apk");		
-		
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE_NAME);
 		capabilities.setCapability("app", APP_PATH );	
 		capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, BASE_PKG);
-
 	}
 		
-	// getAndroidDriver
 
 	public static AppiumDriver<MobileElement> getAndroidDriver() throws MalformedURLException {
 
 		serverUrl = new URL("http://localhost:" + APPIUM_PORT + "/wd/hub");
 		driver = new AndroidDriver<MobileElement>(serverUrl, capabilities);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-
 		return driver;
 
 	}

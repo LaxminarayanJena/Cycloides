@@ -21,23 +21,11 @@ public class TestUtil extends TestBase {
 
 	public static void takeScreenShot() throws IOException {
 
-		// directory
-		
-		
-		destDir = System.getProperty("user.dir")+"/test-output/html/screenshots";
-		System.out.println(destDir);
-
-		// capturing screenshot
+		destDir = System.getProperty("user.dir") + "/test-output/html/screenshots";
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-
-		// Set date
 		dateFormat = new SimpleDateFormat("dd-MMM-yyyy__hh_mm_ssaa");
-
-		// create folder
 		new File(destDir).mkdir();
-
 		destFile = dateFormat.format(new Date()) + ".png";
-
 		FileUtils.copyFile(scrFile, new File(destDir + "/" + destFile));
 
 	}
@@ -47,15 +35,10 @@ public class TestUtil extends TestBase {
 
 		int rows = excel.getRowCount(sheetName);
 		int cols = excel.getColumnCount(sheetName);
-
 		Object[][] data = new Object[rows - 1][cols];
-
-		for (int rowNum = 2; rowNum <= rows; rowNum++) { // 2
-
+		for (int rowNum = 2; rowNum <= rows; rowNum++) {
 			for (int colNum = 0; colNum < cols; colNum++) {
-
-				// data[0][0]
-				data[rowNum - 2][colNum] = excel.getCellData(sheetName, colNum, rowNum); // -2
+				data[rowNum - 2][colNum] = excel.getCellData(sheetName, colNum, rowNum);
 			}
 		}
 

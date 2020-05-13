@@ -20,28 +20,28 @@ public class HomeScreen extends ScreenBase {
 
 	@AndroidFindBy(id = "com.amazon.mShop.android.shopping:id/action_bar_burger_icon")
 	public WebElement hamburgericon;
-	
-	@AndroidFindBy(xpath= "//*[@text='Settings']")
+
+	@AndroidFindBy(xpath = "//*[@text='Settings']")
 	public WebElement settings;
-	
-	@AndroidFindBy(xpath= "//*[@text='Country & Language']")
+
+	@AndroidFindBy(xpath = "//*[@text='Country & Language']")
 	public WebElement countryandlanguage;
 
-	@AndroidFindBy(xpath= "//*[@text='Country/Region: United States']")
+	@AndroidFindBy(xpath = "//*[@text='Country/Region: United States']")
 	public WebElement countryusa;
 
-	@AndroidFindBy(xpath= "//*[contains(@text, 'Australia Amazon.com.au')]")
+	@AndroidFindBy(xpath = "//*[contains(@text, 'Australia Amazon.com.au')]")
 	public WebElement countryaustralia;
 
-	@AndroidFindBy(xpath= "//*[@text='Done']")
+	@AndroidFindBy(xpath = "//*[@text='Done']")
 	public WebElement done;
-	
-	@AndroidFindBy(xpath= "//android.widget.EditText[@index='0']")
+
+	@AndroidFindBy(xpath = "//android.widget.EditText[@index='0']")
 	public WebElement productsearchbox;
-	
-	@AndroidFindBy(xpath= "//*[@text='Search']")
+
+	@AndroidFindBy(xpath = "//*[@text='Search']")
 	public WebElement productsearchtextbox;
-	
+
 	@AndroidFindBy(xpath = "//*[contains(@text, 'Samsung 65\"')]")
 	public List<WebElement> lt;
 
@@ -60,27 +60,27 @@ public class HomeScreen extends ScreenBase {
 		Thread.sleep(2000);
 		done.click();
 		Thread.sleep(2000);
+		log.debug("country selection");
 	}
-	
-	public void searchproduct(String product)
-	{
+
+	public void searchproduct(String product) {
 		productsearchbox.click();
 		productsearchtextbox.sendKeys(product);
-		 ((AndroidDriver<MobileElement>) driver).pressKey(new KeyEvent(AndroidKey.ENTER));
-		 scroll("Next->");
+		((AndroidDriver<MobileElement>) driver).pressKey(new KeyEvent(AndroidKey.ENTER));
+		scroll("Next->");
+		log.debug("search product");
 	}
-	
-	public void productlist() throws InterruptedException
-	{
-		int count=lt.size();
-		Random r=new Random();
-		int linkNo=r.nextInt(count);
-		 MobileElement link=(MobileElement) lt.get(linkNo);
-		
+
+	public void productlist() throws InterruptedException {
+		int count = lt.size();
+		Random r = new Random();
+		int linkNo = r.nextInt(count);
+		MobileElement link = (MobileElement) lt.get(linkNo);
 		Thread.sleep(2000);
-		String RandomSearchPageProductName=link.getText().trim();
-		System.out.println("RandomSearchPageProductName-" +RandomSearchPageProductName);
-		link.click();	
-		
+		String RandomSearchPageProductName = link.getText().trim();
+		System.out.println("RandomSearchPageProductName-" + RandomSearchPageProductName);
+		link.click();
+		log.debug("getting random 65 inch tv");
+
 	}
 }

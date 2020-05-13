@@ -1,6 +1,5 @@
 package screens;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
@@ -12,8 +11,14 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class ProductInformationScreen extends ScreenBase {
 
-	@AndroidFindBy(xpath = "//*[@text='Already a customer? Sign in']")
-	public WebElement SignIn;
+	@AndroidFindBy(xpath = "//*[@text='See All Buying Options']")
+	public WebElement SeeAllBuyingOptions;
+	
+	@AndroidFindBy(xpath = "//android.widget.Button[@index='0']")
+	public WebElement AddToCart;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@index='1']")
+	public WebElement Cart;
 
 	public ProductInformationScreen(AppiumDriver<MobileElement> driver) {
 		super(driver);
@@ -21,15 +26,16 @@ public class ProductInformationScreen extends ScreenBase {
 
 	}
 
-	public void getproductinformation() throws InterruptedException {
-	
+	public void checkout() throws InterruptedException {
+
 		Thread.sleep(3000);
 		scroll("See All Buying Options");
-		 driver.findElement(By.xpath("//*[@text='See All Buying Options']")).click();
-		 driver.findElement(By.xpath("//android.widget.Button[@index='0']")).click();
-		 driver.findElement(By.xpath("//android.widget.TextView[@index='1']")).click();
-		 Thread.sleep(3000);
-		 
+		SeeAllBuyingOptions.click();
+		AddToCart.click();
+		Cart.click();
+		Thread.sleep(3000);
+		log.debug("checkout");
+
 	}
 
 }

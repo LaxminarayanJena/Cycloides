@@ -22,6 +22,7 @@ public class WelcomeScreen extends ScreenBase {
 
 	public AuthScreen login() {
 		SignIn.click();
+		log.debug("Logged in");
 		return new AuthScreen(driver);
 	}
 

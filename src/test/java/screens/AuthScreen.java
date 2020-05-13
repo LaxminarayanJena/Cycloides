@@ -2,7 +2,6 @@ package screens;
 
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
@@ -31,13 +30,15 @@ public class AuthScreen extends ScreenBase {
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 
 	}
-
+    
+	
 	public void userSign_In(String email, String password) throws InterruptedException {
 		emailTextBox.sendKeys(email);
 		Continue.click();
 		Thread.sleep(6000);
 		passwordTextBox.sendKeys(password);
 		ContinueBtn.click();
+		log.debug("User signed in");
 	}
 
 }

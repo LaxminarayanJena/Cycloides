@@ -27,7 +27,7 @@ public class CheckoutScreen extends ScreenBase {
 	public  String checkoutproductinformation() throws InterruptedException {
 		
 		String checkoutscreenproductname =links.get(10).getText();
-		log.debug("checkout page product name");
+		log.debug("getting checkout page product name");
 		return checkoutscreenproductname;	
 		
         

@@ -34,7 +34,7 @@ public class ProductInformationScreen extends ScreenBase {
 		AddToCart.click();
 		Cart.click();
 		Thread.sleep(3000);
-		log.debug("checkout");
+		log.debug("adding to cart and doing checkout");
 
 	}
 
